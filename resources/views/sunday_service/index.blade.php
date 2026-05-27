@@ -112,21 +112,51 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @if($week1?->video_url || $week2?->video_url)
+                                <tr class="hover:bg-church-warm/10 transition-colors">
+                                    <td class="px-5 py-3 font-bold text-church-dark text-sm sm:text-base">
+                                        Video Youtube
+                                    </td>
+                                    <td class="px-5 py-3 text-center border-l border-black/5 leading-relaxed text-sm sm:text-base">
+                                        <a href="{{ $week1?->video_url }}" target="_blank" class="italic hover:underline">
+                                            {{ $week1?->video_url ?? '-' }}
+                                        </a>
+                                    </td>
+                                    <td class="px-5 py-3 text-center border-l border-black/5 leading-relaxed text-sm sm:text-base">
+                                        <a href="{{ $week2?->video_url }}" target="_blank" class="italic hover:underline">
+                                            {{ $week2?->video_url ?? '-' }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
+                            @if($week1?->description || $week2?->description)
+                            <tr class="hover:bg-church-warm/10 transition-colors">
+                                <td class="px-5 py-3 font-bold text-church-dark text-sm sm:text-base">
+                                    Keterangan
+                                </td>
+                                <td class="px-5 py-3 text-center border-l border-black/5 leading-relaxed text-sm sm:text-base">
+                                    {!! nl2br(e($week1?->description ?? '-')) !!}
+                                </td>
+                                <td class="px-5 py-3 text-center border-l border-black/5 leading-relaxed text-sm sm:text-base">
+                                    {!! nl2br(e($week2?->description ?? '-')) !!}
+                                </td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     @empty
-        <div class="bg-white rounded-3xl p-12 text-center card-shadow border border-black/5 mt-10">
+        <div class="bg-white rounded-2xl p-10 md:p-12 card-shadow border border-black/5 text-center">
             <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-church-gold/10 rounded-full text-church-gold text-2xl">
                 <i class="fas fa-church"></i>
             </div>
-            <h3 class="text-xl font-bold mb-2">
+            <h3 class="text-xl font-bold mb-3">
                 Belum ada jadwal kebaktian
             </h3>
-            <p class="text-church-dark/50">
-                Data jadwal kebaktian untuk minggu ini dan minggu depan belum tersedia.
+            <p class="text-church-dark/60 text-sm max-w-md mx-auto">
+                Jadwal kebaktian untuk minggu yang akan datang belum tersedia. <br>Silakan cek kembali nanti.
             </p>
         </div>
     @endforelse

@@ -124,6 +124,7 @@
                             <option value="2">Sidi/Baptis Dewasa</option>
                             <option value="3">Atestasi Keluar</option>
                             <option value="4">Meninggal</option>
+                            <option value="5">Simpatisan</option>
                         </select>
                         @error('membership')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

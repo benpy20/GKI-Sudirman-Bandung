@@ -52,7 +52,20 @@ class AdminAnnouncementController extends Controller
         ];
 
         foreach ($announcements as $announcement) {
-            $announcement->is_date_active = Carbon::now('Asia/Jakarta')->lte(Carbon::parse($announcement->date_end, 'Asia/Jakarta')->endOfDay());
+            $today = Carbon::today('Asia/Jakarta');
+            $start = Carbon::parse($announcement->date_start, 'Asia/Jakarta')->startOfDay();
+            $end = Carbon::parse($announcement->date_end, 'Asia/Jakarta')->endOfDay();
+
+            if ($today->between($start, $end)) {
+                $announcement->status = 'active';
+            } elseif ($today->lt($start)) {
+                $announcement->status = 'upcoming';
+            } else {
+                $announcement->status = 'expired';
+            }
+
+            $announcement->is_date_active = $announcement->status === 'active';
+
             $announcement->date_start = Carbon::parse($announcement->date_start, 'Asia/Jakarta')->translatedFormat('j F Y');
             $announcement->date_end = Carbon::parse($announcement->date_end, 'Asia/Jakarta')->translatedFormat('j F Y');
             $announcement->announcementCategory = $announcementCategory[$announcement->category];
@@ -141,7 +154,20 @@ class AdminAnnouncementController extends Controller
             4 => 'Sarana Penunjang',
         ];
 
-        $announcement->is_date_active = Carbon::now('Asia/Jakarta')->lte(Carbon::parse($announcement->date_end, 'Asia/Jakarta')->endOfDay());
+        $today = Carbon::today('Asia/Jakarta');
+        $start = Carbon::parse($announcement->date_start, 'Asia/Jakarta')->startOfDay();
+        $end = Carbon::parse($announcement->date_end, 'Asia/Jakarta')->endOfDay();
+
+        if ($today->between($start, $end)) {
+            $announcement->status = 'active';
+        } elseif ($today->lt($start)) {
+            $announcement->status = 'upcoming';
+        } else {
+            $announcement->status = 'expired';
+        }
+
+        $announcement->is_date_active = $announcement->status === 'active';
+
         $announcement->date_start = Carbon::parse($announcement->date_start, 'Asia/Jakarta')->translatedFormat('j F Y');
         $announcement->date_end = Carbon::parse($announcement->date_end, 'Asia/Jakarta')->translatedFormat('j F Y');
         $announcement->announcementCategory = $announcementCategory[$announcement->category];

@@ -21,12 +21,16 @@ class AdminStewardController extends Controller
         }
 
         if ($request->filled('commission')) {
-            $query->where('commissions_id', $request->commission);
+            if ($request->commission === 'umum') {
+                $query->whereNull('commissions_id');
+            } else {
+                $query->where('commissions_id', $request->commission);
+            }
         }
 
         $stewards = $query->latest('id')->paginate(10)->withQueryString();
 
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
         return view('admin.steward.index', compact('stewards', 'commissions'));
     }
@@ -36,7 +40,7 @@ class AdminStewardController extends Controller
      */
     public function create()
     {
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
         return view('admin.steward.create', compact('commissions'));
     }
@@ -106,7 +110,7 @@ class AdminStewardController extends Controller
     {
         $steward = Steward::findOrFail($id);
 
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
         return view('admin.steward.edit', compact('steward', 'commissions'));
     }

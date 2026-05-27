@@ -133,6 +133,7 @@
                             <option value="2" {{ old('membership', $member->membership) == 2 ? 'selected' : '' }}>Sidi/Baptis Dewasa</option>
                             <option value="3" {{ old('membership', $member->membership) == 3 ? 'selected' : '' }}>Atestasi Keluar</option>
                             <option value="4" {{ old('membership', $member->membership) == 4 ? 'selected' : '' }}>Meninggal</option>
+                            <option value="5" {{ old('membership', $member->membership) == 5 ? 'selected' : '' }}>Simpatisan</option>
                         </select>
                         @error('membership')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

@@ -31,11 +31,6 @@ class AboutSeeder extends Seeder
                 'users_id' => 1
             ],
             [
-                'name' => 'Tema Setahun',
-                'description' => 'Menjadi gereja yang bertumbuh di dalam iman',
-                'users_id' => 1
-            ],
-            [
                 'name' => 'Alamat',
                 'description' => 'Jl. Jenderal Sudirman No. 638, Bandung 40183',
                 'users_id' => 1
@@ -68,6 +63,24 @@ class AboutSeeder extends Seeder
             [
                 'name' => 'Google Maps',
                 'description' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7771140072223!2d107.57513697499641!3d-6.917229393082363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e60f9afa0293%3A0x63838b8166ba3d47!2sGKI%20Sudirman!5e0!3m2!1sid!2sid!4v1779028497868!5m2!1sid!2sid',
+                'users_id' => 1
+            ],
+            [
+                'name' => 'Tema Utama',
+                'description' => 'Tuhan Mencipta, Manusia Ikut Serta',
+                'users_id' => 1
+            ],
+            [
+                'name' => 'Tema GKI Sinwil Jabar',
+                'description' => 'Permulaan Hikmat Adalah Takut Akan Tuhan: Upaya GKI Sinwil Jabar Memperkuat MULTAE ECCLESIAE',
+                'users_id' => 1
+            ],
+            [
+                'name' => 'Informasi Penting',
+                'description' => 'Sekretariat Gereja: Siska Gunawan (0852-2153 6465)
+Konseling Pastoral: Pdt. Yosafat Simatupang (0813-1496-7766)
+Petugas Kebaktian: Pnt. Khibouth Ambrosia (0815-6204-668)
+Perubahan alamat: Kepala Rayon masing-masing',
                 'users_id' => 1
             ]
         ]);

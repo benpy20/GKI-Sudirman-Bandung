@@ -74,7 +74,7 @@
         </div>
 
         <p class="text-center text-xs text-gray-400 mt-6">
-            &copy; 2026 Sistem Informasi Manajemen Gereja <br> GKI Sudirman Bandung
+            &copy; 2026 GKI Sudirman Bandung
         </p>
     </div>
 

@@ -81,14 +81,10 @@
         @if($worship->video_url)
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                 <div class="aspect-video bg-black relative overflow-hidden">
-                    <iframe id="youtubeFrame"
-                        class="w-full h-full absolute top-0 left-0"
-                        frameborder="0"
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
+                    <iframe id="youtubeFrame" class="w-full h-full absolute top-0 left-0" 
+                        frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                     </iframe>
-                    <div id="videoFallback"
-                        class="absolute inset-0 flex items-center justify-center text-white text-sm bg-black/80 opacity-0 transition">
+                    <div id="videoFallback" class="absolute inset-0 flex items-center justify-center text-white text-sm bg-black/80 opacity-0 transition pointer-events-none">
                         Video tidak tersedia atau link tidak valid
                     </div>
                 </div>

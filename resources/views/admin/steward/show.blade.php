@@ -29,9 +29,25 @@
                 <h3 class="text-xl font-bold text-church-dark">{{ $steward->field }}</h3>
                 <p class="text-sm font-medium text-gray-500 mt-2">{{ $steward->commission?->name ? 'Komisi ' . $steward->commission->name : 'Bidang Umum' }}</p>
                 <div class="flex items-center justify-center w-full mt-6 pt-4 border-t border-gray-100">
-                    <div class="text-center">
-                        <p class="text-xs text-gray-400 font-medium mb-1">Total Jemaat</p>
-                        <p class="text-xl font-bold text-church-dark">{{ $members->count() }}</p>
+                    <div class="grid grid-cols-3 gap-6 text-center w-full">
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium mb-1">Total Jemaat</p>
+                            <p class="text-lg font-bold text-church-dark">
+                                {{ $members->count() }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium mb-1">Aktif</p>
+                            <p class="text-lg font-bold text-green-600">
+                                {{ $members->where('is_active', 1)->count() }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium mb-1">Non-Aktif</p>
+                            <p class="text-lg font-bold text-red-500">
+                                {{ $members->where('is_active', 0)->count() }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +60,7 @@
             </div>
             <div class="p-4 space-y-3 relative">
                 @forelse ($members as $member)
-                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-100">
+                <div class="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-100 {{ $member->is_active == 0 ? 'opacity-50' : '' }}">
                     <div class="h-10 w-10 rounded-full overflow-hidden flex items-center justify-center bg-church-gold">
                         @if($member->image_url)
                             <img src="{{ asset('storage/' . $member->image_url) }}" alt="{{ $member->name }}" class="w-full h-full object-cover">

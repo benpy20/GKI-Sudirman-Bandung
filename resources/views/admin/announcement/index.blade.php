@@ -110,14 +110,32 @@
                         <div class="font-medium text-gray-800">{{ $announcement->date_start }} - {{ $announcement->date_end }}</div>
                     </td>
                     <td class="px-6 py-4">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold 
-                            {{ $announcement->is_date_active 
-                                ? 'bg-green-50 text-green-700 border-green-100' 
-                                : 'bg-red-50 text-red-700 border-red-100' }}">
-                            <span class="w-1.5 h-1.5 rounded-full 
-                                {{ $announcement->is_date_active ? 'bg-green-500' : 'bg-red-500' }}">
-                            </span>
-                            {{ $announcement->is_date_active ? 'Berjalan' : 'Berakhir' }}
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold
+                            @if($announcement->status === 'active')
+                                bg-green-50 text-green-700 border-green-100
+                            @elseif($announcement->status === 'upcoming')
+                                bg-blue-50 text-blue-700 border-blue-100
+                            @else
+                                bg-red-50 text-red-700 border-red-100
+                            @endif
+                        ">
+                            <span class="w-1.5 h-1.5 rounded-full
+                                @if($announcement->status === 'active')
+                                    bg-green-500
+                                @elseif($announcement->status === 'upcoming')
+                                    bg-blue-500
+                                @else
+                                    bg-red-500
+                                @endif
+                            "></span>
+
+                            @if($announcement->status === 'active')
+                                Berjalan
+                            @elseif($announcement->status === 'upcoming')
+                                Mendatang
+                            @else
+                                Berakhir
+                            @endif
                         </span>
                     </td>
                     <td class="px-6 py-4">

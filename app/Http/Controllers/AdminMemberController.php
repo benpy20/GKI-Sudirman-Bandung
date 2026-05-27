@@ -54,6 +54,7 @@ class AdminMemberController extends Controller
             2 => 'Sidi/Baptis Dewasa',
             3 => 'Atestasi Keluar',
             4 => 'Meninggal Dunia',
+            5 => 'Simpatisan'
         ];
 
         foreach ($members as $member) {
@@ -71,7 +72,7 @@ class AdminMemberController extends Controller
     {
         $regions = Region::all();
 
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
         $stewards = Steward::with('commission')->get()->groupBy(function ($steward) {
             return $steward->commission ? $steward->commission->name : 'Bidang Umum';
@@ -197,6 +198,7 @@ class AdminMemberController extends Controller
             2 => 'Sidi/Baptis Dewasa',
             3 => 'Atestasi Keluar',
             4 => 'Meninggal Dunia',
+            5 => 'Simpatisan'
         ];
 
         $memberGender = [
@@ -228,7 +230,7 @@ class AdminMemberController extends Controller
 
         $regions = Region::all();
 
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
         $stewards = Steward::with('commission')->get()->groupBy(function ($steward) {
             return $steward->commission ? $steward->commission->name : 'Bidang Umum';

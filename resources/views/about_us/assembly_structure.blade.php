@@ -6,8 +6,7 @@
 
 @section('content')
 <div class="mb-10">
-    <h2 class="text-3xl font-serif mb-2">Struktur Kemajelisan</h2>
-    <p class="text-church-dark/50 italic">Daftar hamba Tuhan dan majelis di GKI Sudirman</p>
+    <h2 class="text-3xl font-bold mb-2">Struktur Kemajelisan</h2>
     <div class="w-16 h-1 bg-church-gold mt-3 rounded-full"></div>
 </div>
 

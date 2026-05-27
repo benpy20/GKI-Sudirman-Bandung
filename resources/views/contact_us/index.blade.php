@@ -90,6 +90,18 @@
                     @endforeach
                 </div>
             </div>
+            <div class="pt-8 mt-8 border-t border-black/10">
+                <h3 class="text-lg sm:text-xl font-bold mb-4">Informasi Penting Lainnya</h3>
+                @foreach($abouts as $about)
+                    @if($about->name === 'Informasi Penting')
+                        <div class="bg-church-gold/5 rounded-xl px-4 py-4">
+                            <p class="text-sm sm:text-base text-church-dark/80 leading-relaxed">
+                                {!! nl2br(e($about->description)) !!}
+                            </p>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
         </div>
         @foreach($abouts as $about)
             @if($about->name === 'Google Maps')

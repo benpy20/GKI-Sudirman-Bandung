@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminRegionController;
 use App\Http\Controllers\AdminStewardController;
 use App\Http\Controllers\AdminSuperAdminController;
 use App\Http\Controllers\AdminWorshipController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ArticleTeologisController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ContactUsController;
@@ -31,25 +32,26 @@ Route::get('/', function () {
     return redirect()->route('home.index');
 });
 
-Route::resource('home', HomeController::class);
+Route::get('home', [HomeController::class, 'index'])->name('home.index');
 
-Route::resource('warta_kebaktian', WartaKebaktianController::class);
-Route::resource('warta_jemaat', WartaJemaatController::class);
-Route::resource('warta_kegiatan', WartaKegiatanController::class);
-Route::get('/warta/{category}', [WartaController::class, 'index'])->name('warta.kategori');
-Route::resource('renungan_harian', DevotionController::class);
-Route::resource('artikel_teologis', ArticleTeologisController::class);
-Route::resource('hubungi_kami', ContactUsController::class);
+// Route::resource('warta_kebaktian', WartaKebaktianController::class);
+// Route::resource('warta_jemaat', WartaJemaatController::class);
+// Route::resource('warta_kegiatan', WartaKegiatanController::class);
+// Route::get('/warta/{category}', [WartaController::class, 'index'])->name('warta.kategori');
+Route::get('kebaktian_minggu', [SundayServicesController::class, 'index'])->name('sunday_services.index');
+Route::get('warta', [AnnouncementController::class, 'index'])->name('announcement.index');
+Route::get('warta/{id}', [AnnouncementController::class, 'show'])->name('announcement.show');
+Route::get('renungan_harian', [DevotionController::class, 'index'])->name('devotion.index');
+Route::get('renungan_harian/{id}', [DevotionController::class, 'show'])->name('devotion.show');
+// Route::resource('artikel_teologis', ArticleTeologisController::class);
+Route::get('hubungi_kami', [ContactUsController::class, 'index'])->name('contact_us.index');
 // Route::resource('visi_misi', VisiMisiController::class);
 
-
-Route::get('sunday_services', [SundayServicesController::class, 'index'])->name('kebaktian_minggu');
-
-Route::prefix('about_us')->name('tentang_kami.')->controller(AboutUsController::class)->group(function () {
-    Route::get('vision_mission', 'visionMission')->name('visi_misi');
-    Route::get('assembly_structure', 'assemblyStructure')->name('struktur_kemajelisan');
-    // Route::get()
-    // Route::get('membership', 'membership')->name('keanggotaan');
+Route::prefix('tentang_kami')->name('about_us.')->controller(AboutUsController::class)->group(function () {
+    Route::get('visi_misi', 'visionMission')->name('vision_mission');
+    Route::get('struktur_kemajelisan', 'assemblyStructure')->name('assembly_structure');
+    Route::get('rayon', 'region')->name('region');
+    Route::get('tema_gereja', 'church_theme')->name('church_theme');
 });
 
 // Route::prefix('tentang')->name('tentang.')->group(function () {

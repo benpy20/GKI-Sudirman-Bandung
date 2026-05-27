@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Member;
+use App\Models\Region;
 use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
@@ -33,5 +34,19 @@ class AboutUsController extends Controller
         }
 
         return view('about_us.assembly_structure', compact('members'));
+    }
+
+    public function region()
+    {
+        $regions = Region::all();
+
+        return view('about_us.region', compact('regions'));
+    }
+
+    public function church_theme()
+    {
+        $abouts = About::all();
+
+        return view('about_us.church_theme', compact('abouts'));
     }
 }

@@ -47,7 +47,7 @@ class AdminWorshipController extends Controller
         $worships = $query->latest('id')->paginate(10)->withQueryString();
 
         // Ambil data komisi supaya ga hardcode jenis kebaktiannya
-        $commission_names = Commission::pluck('name', 'id');
+        $commission_names = Commission::where('name', '!=', 'Umum')->pluck('name', 'id');
 
         foreach ($worships as $worship) {
             $worship->date_formatted = Carbon::parse($worship->date, 'Asia/Jakarta')->translatedFormat('j F Y');
@@ -71,9 +71,9 @@ class AdminWorshipController extends Controller
 
         $stewards = Steward::all();
 
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
-        $members = Member::with('stewards')->get();
+        $members = Member::where('is_active', 1)->with('stewards')->get();
 
         $preachers = Preacher::all();
 
@@ -193,9 +193,9 @@ class AdminWorshipController extends Controller
 
         $stewards = Steward::all();
 
-        $commissions = Commission::all();
+        $commissions = Commission::where('name', '!=', 'Umum')->get();
 
-        $members = Member::with('stewards')->get();
+        $members = Member::where('is_active', 1)->with('stewards')->get();
 
         $preachers = Preacher::all();
 

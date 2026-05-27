@@ -23,12 +23,33 @@
                 <h3 class="font-bold text-church-dark flex items-center gap-2">
                     Waktu Tayang
                 </h3>
-                <div class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold 
-                    {{ $announcement->is_date_active ? 'bg-green-50 text-green-700 border-green-100' : 'bg-red-50 text-red-700 border-red-100' }} shadow-sm">
+                <div class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold
+                    @if($announcement->status === 'active')
+                        bg-green-50 text-green-700 border-green-100
+                    @elseif($announcement->status === 'upcoming')
+                        bg-blue-50 text-blue-700 border-blue-100
+                    @else
+                        bg-red-50 text-red-700 border-red-100
+                    @endif
+                    shadow-sm
+                ">
                     <span class="w-2 h-2 rounded-full mr-2
-                        {{ $announcement->is_date_active ? 'bg-green-500' : 'bg-red-500' }}">
-                    </span>
-                    {{ $announcement->is_date_active ? 'Sedang Berjalan' : 'Telah Berakhir' }}
+                        @if($announcement->status === 'active')
+                            bg-green-500
+                        @elseif($announcement->status === 'upcoming')
+                            bg-blue-500
+                        @else
+                            bg-red-500
+                        @endif
+                    "></span>
+
+                    @if($announcement->status === 'active')
+                        Sedang Berjalan
+                    @elseif($announcement->status === 'upcoming')
+                        Mendatang
+                    @else
+                        Telah Berakhir
+                    @endif
                 </div>
             </div>
             <div class="p-6">

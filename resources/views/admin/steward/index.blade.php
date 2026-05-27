@@ -45,6 +45,9 @@
                     </label>
                     <select name="commission" onchange="this.form.submit()" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-church-gold">
                         <option value="">Semua</option>
+                        <option value="umum" {{ request('commission') == 'umum' ? 'selected' : '' }}>
+                            Bidang Umum
+                        </option>
                         @foreach($commissions as $commission)
                             <option value="{{ $commission->id }}"
                                 {{ request('commission') == $commission->id ? 'selected' : '' }}>

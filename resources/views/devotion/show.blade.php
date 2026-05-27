@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="w-full">
-    <a href="{{ route('renungan_harian.index') }}" class="inline-flex items-center gap-2 text-church-dark/50 font-bold mb-8">
+    <a href="{{ route('devotion.index') }}" class="inline-flex items-center gap-2 text-church-dark/50 font-bold mb-8">
         <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         Kembali
     </a>

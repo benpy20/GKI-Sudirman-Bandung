@@ -14,7 +14,7 @@
     </div>
     <div class="flex flex-wrap gap-3 mb-10">
         @foreach($devotionCategories as $category)
-            <a href="{{ route('renungan_harian.index', ['category' => $category['value']]) }}" class="px-5 py-2 text-sm sm:text-base rounded-full bg-white border border-black/5
+            <a href="{{ route('devotion.index', ['category' => $category['value']]) }}" class="px-5 py-2 text-sm sm:text-base rounded-full bg-white border border-black/5
             {{ $selectedCategory == $category['value'] ? 'text-church-gold border-church-gold/30' : 'text-church-dark/60' }}">
                 {{ $category['label'] }}
             </a>
@@ -46,7 +46,7 @@
                 <span class="text-xs sm:text-sm italic opacity-50">
                     Oleh: {{ $featuredDevotion->author }}
                 </span>
-                <a href="{{ route('renungan_harian.show', $featuredDevotion->id) }}" class="inline-flex items-center gap-2 text-sm sm:text-base text-church-gold font-semibold">
+                <a href="{{ route('devotion.show', $featuredDevotion->id) }}" class="inline-flex items-center gap-2 text-sm sm:text-base text-church-gold font-semibold">
                     Baca Renungan
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -78,7 +78,7 @@
                 </button>
                 <div x-show="open" x-transition class="border-t border-black/5">
                     @foreach($items as $devotion)
-                        <a href="{{ route('renungan_harian.show', $devotion->id) }}" class="flex items-center justify-between gap-4 p-5 hover:bg-church-warm/20 transition-colors border-b border-black/5 last:border-0">
+                        <a href="{{ route('devotion.show', $devotion->id) }}" class="flex items-center justify-between gap-4 p-5 hover:bg-church-warm/20 transition-colors border-b border-black/5 last:border-0">
                             <div class="min-w-0">
                                 <div class="flex items-center gap-2 mb-2 flex-wrap">
                                     <span class="text-xs opacity-50">
