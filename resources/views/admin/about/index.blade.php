@@ -54,13 +54,6 @@
                             <a href="{{ route('admin.about.edit', $about->id) }}" title="Edit" class="text-church-dark hover:text-yellow-800 bg-church-gold/10 hover:bg-church-gold/30 p-2 rounded-lg transition-colors border border-church-gold/30">
                                 <i class="fas fa-edit w-4 text-center"></i>
                             </a>
-                            <form id="delete-form-{{ $about->id }}" action="{{ route('admin.about.destroy', $about->id) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" title="Hapus" onclick="confirmDelete({{ $about->id }})" class="cursor-pointer text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition-colors border border-red-100">
-                                    <i class="fas fa-trash-alt w-4 text-center"></i>
-                                </button>
-                            </form>
                         </div>
                     </td>
                 </tr>
