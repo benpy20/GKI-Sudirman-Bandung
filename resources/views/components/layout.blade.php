@@ -17,44 +17,7 @@
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-church-warm font-sans text-church-dark" 
-    x-data="{
-        activeMonth: 0,
-        bibleChecked: JSON.parse(localStorage.getItem('bibleChecked') || '[]'),
-
-        formatDate(dateStr) {
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
-            return new Date(dateStr).toLocaleDateString('id-ID', options);
-        },
-
-        getDaysInMonth() {
-            return Array.from({ length: 30 }, (_, i) => this.activeMonth * 30 + i + 1);
-        },
-
-        getPassage(day) {
-            const books = ['Kejadian', 'Keluaran', 'Imamat', 'Bilangan', 'Ulangan'];
-            const book = books[Math.floor((day - 1) / 30) % books.length];
-            const start = ((day - 1) % 30) * 3 + 1;
-            return `${book} ${start}-${start + 2}`;
-        },
-
-        toggleBibleDay(day) {
-            if (this.bibleChecked.includes(day)) {
-                this.bibleChecked = this.bibleChecked.filter(d => d !== day);
-            } else {
-                this.bibleChecked.push(day);
-            }
-            localStorage.setItem('bibleChecked', JSON.stringify(this.bibleChecked));
-        },
-
-        isDayChecked(day) {
-            return this.bibleChecked.includes(day);
-        },
-
-        getMonthlyProgress() {
-            return this.bibleChecked.filter(d => d > this.activeMonth * 30 && d <= (this.activeMonth + 1) * 30).length;
-        }
-    }">
+<body class="bg-church-warm font-sans text-church-dark">
     @include('components.navbar')
 
     <div class="pt-24">

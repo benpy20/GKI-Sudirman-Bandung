@@ -18,6 +18,8 @@ class AboutUsController extends Controller
 
     public function assemblyStructure()
     {
+        $abouts = About::all();
+        
         $members = Member::whereIn('status', [1, 2, 3, 4, 5])->get();
 
         $memberStatus = [
@@ -25,15 +27,14 @@ class AboutUsController extends Controller
             2 => 'Pendeta',
             3 => 'Penginjil',
             4 => 'Penatua',
-            5 => 'Diaken',
-            6 => 'Jemaat Biasa',
+            5 => 'Diaken'
         ];
 
         foreach($members as $member) {
             $member->memberStatus = $memberStatus[$member->status];
         }
 
-        return view('about_us.assembly_structure', compact('members'));
+        return view('about_us.assembly_structure', compact('members', 'abouts'));
     }
 
     public function region()

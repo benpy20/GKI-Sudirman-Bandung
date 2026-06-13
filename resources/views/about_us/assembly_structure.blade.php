@@ -10,6 +10,29 @@
     <div class="w-16 h-1 bg-church-gold mt-3 rounded-full"></div>
 </div>
 
+@foreach($abouts as $about)
+    @if($about->name === 'Struktur Kemajelisan')
+        <div class="mb-14">
+            <div class="bg-white rounded-2xl border border-black/5 card-shadow p-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-church-dark mb-3">
+                        Struktur Kemajelisan GKI Sudirman Bandung
+                    </h3>
+                    <p class="text-church-dark/70 leading-relaxed mb-6">
+                        Untuk melihat susunan lengkap Majelis Jemaat GKI Sudirman Bandung, silakan tekan tautan berikut.
+                    </p>
+                    <a href="{{ $about->description }}"
+                        target="_blank"
+                        class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-church-gold text-white font-semibold hover:scale-105 transition-all duration-300 shadow-md">
+                        <i class="fas fa-external-link-alt"></i>
+                        Lihat Selengkapnya
+                    </a>
+                </div>
+            </div>
+        </div>
+    @endif
+@endforeach
+
 <div class="mb-10">
     <h3 class="text-xl font-bold mb-4">Pendeta Jemaat</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mx-auto">
